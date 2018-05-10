@@ -1,17 +1,5 @@
 defmodule Sudoku do
-  @moduledoc """
-  Documentation for Sudoku.
-  """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Sudoku.hello
-      :world
-
-  """
   def hello do
     :world
   end
@@ -25,6 +13,9 @@ defmodule Sudoku do
   end
   def rows(board) do
     board
+  end
+  def row(board,index) do
+    Enum.at(board,index)
   end
   def col(board,index) do
     Enum.map(board, &Enum.at( &1, index))
@@ -45,5 +36,23 @@ defmodule Sudoku do
   def square(board, index) do
     square(board, sq_coordinate(index))
   end
+  def squares(board) do
+    Enum.map((0..3), &(square(board, &1)))
+  end
+  def validtest (dirty) do
+    clean =
+      dirty
+      |> Enum.reject(&(&1 == 0))
+      |> Enum.uniq
+    rinsed =
+      dirty
+      |> Enum.reject(&(&1 == 0))
+
+    clean == rinsed
+  end
+  def boardvalid do
+
+  end
+
 
 end
