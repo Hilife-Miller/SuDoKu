@@ -11,6 +11,14 @@ defmodule Sudoku do
       [4,1,2,3]
     ]
   end
+  def invalidboard do
+    [
+      [1,0,0,3],
+      [0,1,2,0],
+      [2,2,1,0],
+      [0,0,0,1]
+    ]
+  end
   def rows(board) do
     board
   end
@@ -50,9 +58,15 @@ defmodule Sudoku do
 
     clean == rinsed
   end
-  def boardvalid do
-
+  def validlistoflists (list) do
+    Enum.all?(list, &validtest/1)
   end
+  def fulltest (board) do
+    boardcol = cols(board)
+    boardsq = squares(board)
+    Enum.all?([board,boardcol,boardsq], &validlistoflists/1)
+  end
+
 
 
 end
