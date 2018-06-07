@@ -5,4 +5,8 @@ defmodule SudokuTest do
   test "greets the world" do
     assert Sudoku.hello() == :world
   end
+
+  test "Should return a square" do
+    assert (Sudoku.square(Sudoku.fullboard))
+  end
 end

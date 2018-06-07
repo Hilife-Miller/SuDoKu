@@ -66,6 +66,17 @@ defmodule Sudoku do
     boardsq = squares(board)
     Enum.all?([board,boardcol,boardsq], &validlistoflists/1)
   end
+  def validfulltest (%{rows: rows, columns: cols, squares: squares}) do
+    validlistoflists(rows) && validlistoflists(cols) && validlistoflists(squares)
+  end
+  def board_meta (board) do
+    %{
+      rows: rows(board),
+      columns: cols(board),
+      squares: squares(board),
+      board: board
+    }
+  end
 
 
 
